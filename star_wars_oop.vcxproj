@@ -141,6 +141,7 @@
   <ItemGroup>
     <ClCompile Include="jedi.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="planet.cpp" />
     <ClCompile Include="string.cpp" />
   </ItemGroup>
   <ItemGroup>
