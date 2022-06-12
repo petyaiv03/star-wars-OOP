@@ -3,16 +3,16 @@
 Jedi::Jedi()
 {
 	name = nullptr;
-	rang = nullptr;
+	rank = nullptr;
 	age = 0;
 	lightsaber_colour = nullptr;
 	power = 0;
 }
 
-Jedi::Jedi(String _name, String _rang, int _age, String _lightsaber_colour, double _power)
+Jedi::Jedi(String _name, String _rank, int _age, String _lightsaber_colour, double _power)
 {
 	name = _name;
-	rang = _rang;
+	rank = _rank;
 	age = _age;
 	lightsaber_colour = _lightsaber_colour;
 	power = _power;
@@ -23,9 +23,9 @@ String Jedi::getName() const
 	return name;
 }
 
-String Jedi::getRang() const
+String Jedi::getRank() const
 {
-	return rang;
+	return rank;
 }
 
 int Jedi::getAge() const
@@ -46,7 +46,7 @@ double Jedi::getPower() const
 std::istream& operator>>(std::istream& in, Jedi& jedi)
 {
 	in >> jedi.name;
-	in >> jedi.rang;
+	in >> jedi.rank;
 	in >> jedi.age;
 	in >> jedi.lightsaber_colour;
 	in >> jedi.power;
@@ -61,7 +61,7 @@ std::ostream& operator<<(std::ostream& out, const Jedi& jedi)
 	out << " ";
 	
 	out << "Rang: ";
-	out << jedi.rang;
+	out << jedi.rank;
 	out << " ";
 
 	out << "Age: ";

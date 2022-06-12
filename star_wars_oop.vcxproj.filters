@@ -27,6 +27,9 @@
     <ClCompile Include="planet.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="galaxy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="jedi.h">

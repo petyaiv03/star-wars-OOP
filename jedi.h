@@ -5,15 +5,15 @@ class Jedi
 {
 private:
 	String name;
-	String rang;
+	String rank;
 	int age;
 	String lightsaber_colour;
 	double power;
 public:
 	Jedi();
-	Jedi(String _name, String _rang, int _age, String _lightsaber_colour, double _power);
+	Jedi(String _name, String _rank, int _age, String _lightsaber_colour, double _power);
 	String getName() const;
-	String getRang() const;
+	String getRank() const;
 	int getAge() const;
 	String getColour() const;
 	double getPower() const;

@@ -30,6 +30,7 @@ Planet::~Planet()
 void Planet::copy(const Planet& other)
 {
 	planetName = other.planetName;
+	jediOnPlanet = new Jedi[other.amountOfJedi];
 	for (int i = 0; i < amountOfJedi; ++i)
 	{
 		jediOnPlanet[i] = other.jediOnPlanet[i];

@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="galaxy.cpp" />
     <ClCompile Include="jedi.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="planet.cpp" />
