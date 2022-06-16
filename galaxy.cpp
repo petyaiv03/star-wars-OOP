@@ -8,7 +8,7 @@ Galaxy::Galaxy()
 
 Galaxy::Galaxy(const Galaxy& other)
 {
-	
+	copy(other);
 }
 
 Galaxy& Galaxy::operator=(const Galaxy& other)
