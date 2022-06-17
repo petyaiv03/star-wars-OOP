@@ -1,6 +1,7 @@
 #pragma once
 #include "planet.h"
 #include "string.h"
+
 class Galaxy {
 private:
 	Planet* planets;

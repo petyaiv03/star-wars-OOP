@@ -12,7 +12,9 @@ public:
 	Planet(const Planet& other);
 	Planet& operator=(const Planet& other);
 	~Planet();
-	
+	String getName() const;
+	Jedi* getJediOnPlanet() const;
+	int getAmountOfJedi() const;
 private:
 	void copy(const Planet& other);
 	void clear();

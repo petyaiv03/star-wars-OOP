@@ -43,8 +43,38 @@ void Galaxy::clear()
 
 void Galaxy::add_planet(String planet_name)
 {
-	//std::cout << "Enter the name of the planet you want to add: ";
-	//std::cin.ignore(10000, '\n');
-	//planet_name.readFromConsole();
+	Planet planet(planet_name);
+	Planet* array_ = new Planet[size + 1];
+	for (int i = 0; i < size - 1; i++)
+	{
+		array_[i] = planets[i];
+	}
+	array_[size - 1] = planet;
+	size++;
+	delete [] planets;
+	planets = array_;
+}
 
+void Galaxy::create_jedi(String planet_name, String jedi_name, String jedi_rank, int jedi_age, String saber_color, double jedi_strength)
+{
+	Jedi jedi(jedi_name, jedi_rank, jedi_age, saber_color, jedi_strength);
+	//gets index you can do it as function ot method---
+	int planet_index;
+	for (int i = 0; i < size; i++)
+	{
+		if (strcmp(planets[i].getName().str(), planet_name.str()) == 0)
+		{
+			planet_index = i;
+		}
+	}
+	//---
+	/*Jedi* array_ = new Jedi[ + 1];
+	for (int i = 0; i < size - 1; i++)
+	{
+		array_[i] = planets[i];
+	}
+	array_[size - 1] = planet;
+	size++;
+	delete[] planets;
+	planets = array_;*/
 }

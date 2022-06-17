@@ -22,6 +22,21 @@ Planet::~Planet()
 	clear();
 }
 
+String Planet::getName() const
+{
+	return planetName;
+}
+
+Jedi* Planet::getJediOnPlanet() const
+{
+	return jediOnPlanet;
+}
+
+int Planet::getAmountOfJedi() const
+{
+	return amountOfJedi;
+}
+
 void Planet::copy(const Planet& other)
 {
 	planetName = other.planetName;
