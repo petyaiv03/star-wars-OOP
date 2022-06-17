@@ -8,10 +8,11 @@ private:
 	Jedi* jediOnPlanet;
 	int amountOfJedi;
 public:
-	Planet();
+	Planet(String planetName = "");
 	Planet(const Planet& other);
 	Planet& operator=(const Planet& other);
 	~Planet();
+	
 private:
 	void copy(const Planet& other);
 	void clear();

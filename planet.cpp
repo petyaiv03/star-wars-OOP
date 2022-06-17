@@ -1,11 +1,6 @@
 #include "planet.h"
 
-Planet::Planet()
-{
-	planetName = nullptr;
-	jediOnPlanet = nullptr;
-	amountOfJedi = 0;
-}
+Planet::Planet(String planetName) : planetName(planetName), jediOnPlanet(nullptr), amountOfJedi(0) {}
 
 Planet::Planet(const Planet& other)
 {

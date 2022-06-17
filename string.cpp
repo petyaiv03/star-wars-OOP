@@ -82,6 +82,11 @@ void String::deserialize(std::ifstream& in)
 	in.read(data, length);
 }
 
+void String::readFromConsole()
+{
+	std::cin.getline(data, MAX_STRLEN);
+}
+
 void String::copy(const String& other)
 {
 	data = new char[strlen(other.data) + 1];

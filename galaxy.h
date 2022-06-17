@@ -23,7 +23,7 @@ public:
 	void get_youngest_jedi(String planet_name, String jedi_rank);
 	void get_most_used_saber_colour(String planet_name, String jedi_rank);
 	void get_most_used_saber_colour(String planet_name);
-	void print(String planet_name);
-	void print(String jedi_name);
+	void printPlanet(String planet_name);
+	void printJedi(String jedi_name);
 	Galaxy& operator + (const Galaxy& other);//should i overload for planet class?
 };

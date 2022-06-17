@@ -4,10 +4,11 @@
 #include <cstring>
 #include <fstream>
 
+	const size_t MAX_STRLEN = 128;
+
 class String {
 private:
 	char* data;
-
 public:
 	String();
 	String(const char* other_string);
@@ -22,7 +23,7 @@ public:
 	void deserialize(std::ifstream& in);
 	friend std::istream& operator >> (std::istream& in, String& string);
 	friend std::ostream& operator << (std::ostream& out, const String& string);
-
+	void readFromConsole();
 private:
 	void copy(const String& other);
 	void clear();

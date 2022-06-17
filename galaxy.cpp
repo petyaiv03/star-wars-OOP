@@ -40,3 +40,11 @@ void Galaxy::clear()
 {
 	delete[] planets;
 }
+
+void Galaxy::add_planet(String planet_name)
+{
+	//std::cout << "Enter the name of the planet you want to add: ";
+	//std::cin.ignore(10000, '\n');
+	//planet_name.readFromConsole();
+
+}
