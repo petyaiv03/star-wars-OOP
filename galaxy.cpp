@@ -41,13 +41,13 @@ void Galaxy::clear()
 	delete[] planets;
 }
 
-void Galaxy::add_planet(String planet_name)
+void Galaxy::add_planet(String &planet_name)
 {
 	Planet planet(planet_name);
 	Planet* array_ = new Planet[size + 1];
 	for (int i = 0; i < size - 1; i++)
 	{
-		array_[i] = planets[i];
+		array_[i] = planets[i];//ot kompilatora e :D
 	}
 	array_[size - 1] = planet;
 	size++;
@@ -55,7 +55,7 @@ void Galaxy::add_planet(String planet_name)
 	planets = array_;
 }
 
-void Galaxy::create_jedi(String planet_name, String jedi_name, String jedi_rank, int jedi_age, String saber_color, double jedi_strength)
+void Galaxy::create_jedi(String &planet_name, String &jedi_name, String &jedi_rank, int jedi_age, String &saber_color, double jedi_strength)
 {
 	Jedi jedi(jedi_name, jedi_rank, jedi_age, saber_color, jedi_strength);
 	//gets index you can do it as function ot method---
