@@ -135,6 +135,18 @@ void Galaxy::demote_jedi(String& jedi_name, double multiplier)
 
 void Galaxy::get_strongest_jedi(String& planet_name)
 {
+	int planet_index = get_index(planet_name);
+	int max_power = -1;
+	int max_power_index = -1;
+	for (int i = 0; i < planets[planet_index].getAmountOfJedi(); i++)
+	{
+		if (max_power < planets[planet_index].getJediOnPlanet()[i].getPower())
+		{
+			max_power = planets[planet_index].getJediOnPlanet()[i].getPower();
+			max_power_index = i;
+		}
+	}
+	std::cout << planets[planet_index].getJediOnPlanet()[max_power_index];
 }
 
 void Galaxy::get_most_used_saber_colour(String& planet_name)
