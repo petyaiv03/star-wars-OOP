@@ -32,6 +32,11 @@ Jedi* Planet::getJediOnPlanet() const
 	return jediOnPlanet;
 }
 
+void Planet::setJediOnPlanet(Jedi* array)
+{
+	array = jediOnPlanet;
+}
+
 int Planet::getAmountOfJedi() const
 {
 	return amountOfJedi;

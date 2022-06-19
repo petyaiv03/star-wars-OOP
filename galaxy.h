@@ -27,4 +27,7 @@ public:
 	void printPlanet(String &planet_name);
 	void printJedi(String &jedi_name);
 	Galaxy& operator + (const Galaxy& other);//should i overload for planet class?
+
+	int get_index(String& planet_name);
+	void looking_for_jedi(String& jedi_name);
 };
