@@ -98,7 +98,7 @@ void Galaxy::promote_jedi(String& jedi_name, double multiplier)
 			if (strcmp(planets[i].getJediOnPlanet()[j].getName().str(), jedi_name.str()) == 0)
 			{
 				planets[i].getJediOnPlanet()[j].setPower((1+multiplier) * (planets[i].getJediOnPlanet()[j].getPower()));
-				if (planets[i].getJediOnPlanet()[j].getRank() != GRAND_MASTER)
+				if (planets[i].getJediOnPlanet()[j].getRank() != JediRank :: GRAND_MASTER)
 				{
 					planets[i].getJediOnPlanet()[j].setRank((JediRank)((int) planets[i].getJediOnPlanet()[j].getRank() + 1));
 				}
@@ -120,7 +120,7 @@ void Galaxy::demote_jedi(String& jedi_name, double multiplier)
 			if (strcmp(planets[i].getJediOnPlanet()[j].getName().str(), jedi_name.str()) == 0)
 			{
 				planets[i].getJediOnPlanet()[j].setPower((1 - multiplier) * (planets[i].getJediOnPlanet()[j].getPower()));
-				if (planets[i].getJediOnPlanet()[j].getRank() != YOUNGLING)
+				if (planets[i].getJediOnPlanet()[j].getRank() != JediRank::YOUNGLING)
 				{
 					planets[i].getJediOnPlanet()[j].setRank((JediRank)((int)planets[i].getJediOnPlanet()[j].getRank() - 1));
 				}
@@ -136,7 +136,7 @@ void Galaxy::demote_jedi(String& jedi_name, double multiplier)
 void Galaxy::get_strongest_jedi(String& planet_name)
 {
 	int planet_index = get_index(planet_name);
-	int max_power = -1;
+	double max_power = -1;
 	int max_power_index = -1;
 	for (int i = 0; i < planets[planet_index].getAmountOfJedi(); i++)
 	{
@@ -151,6 +151,7 @@ void Galaxy::get_strongest_jedi(String& planet_name)
 
 void Galaxy::get_most_used_saber_colour(String& planet_name)
 {
+
 }
 
 void Galaxy::printJedi(String& jedi_name)

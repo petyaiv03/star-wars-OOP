@@ -60,7 +60,7 @@ std::istream& operator>>(std::istream& in, Jedi& jedi)
 	in >> jedi.name;
 	String inputRank;
 	in >> inputRank;
-	for (int i = 0; i <= GRAND_MASTER; i++)
+	for (int i = 0; i <=(int) JediRank::GRAND_MASTER; i++)
 	{
 		if (strcmp(Jedi::JEDI_RANKS[i], inputRank.str()) == 0)
 		{
@@ -81,7 +81,7 @@ std::ostream& operator<<(std::ostream& out, const Jedi& jedi)
 	out << " ";
 	
 	out << "Rang: ";
-	out << Jedi::JEDI_RANKS[jedi.rank];
+	out << Jedi::JEDI_RANKS[(int)jedi.rank];
 	out << " ";
 
 	out << "Age: ";

@@ -1,7 +1,7 @@
 #pragma once
 #include "string.h"
 
-enum JediRank
+enum class JediRank
 {
 	YOUNGLING,
 	INITIATE,
@@ -12,7 +12,6 @@ enum JediRank
 	BATTLE_MASTER,
 	GRAND_MASTER
 };
-
 
 class Jedi
 {
