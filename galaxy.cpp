@@ -56,7 +56,7 @@ void Galaxy::add_planet(String &planet_name)
 	planets = array_;
 }
 
-void Galaxy::create_jedi(String &planet_name, String &jedi_name, String &jedi_rank, int jedi_age, String &saber_color, double jedi_strength)
+void Galaxy::create_jedi(String &planet_name, String &jedi_name, JediRank &jedi_rank, int jedi_age, String &saber_color, double jedi_strength)
 {
 	Jedi jedi(jedi_name, jedi_rank, jedi_age, saber_color, jedi_strength);
 
@@ -91,7 +91,68 @@ void Galaxy::remove_jedi(String& jedi_name, String& planet_name)
 
 void Galaxy::promote_jedi(String& jedi_name, double multiplier)
 {
+	for (int i = 0; i < size; i++)
+	{
+		for (int j = 0; j < planets[i].getAmountOfJedi(); j++)
+		{
+			if (strcmp(planets[i].getJediOnPlanet()[j].getName().str(), jedi_name.str()) == 0)
+			{
+				planets[i].getJediOnPlanet()[j].setPower((1+multiplier) * (planets[i].getJediOnPlanet()[j].getPower()));
+				if (planets[i].getJediOnPlanet()[j].getRank() != GRAND_MASTER)
+				{
+					planets[i].getJediOnPlanet()[j].setRank((JediRank)((int) planets[i].getJediOnPlanet()[j].getRank() + 1));
+				}
+				else
+				{
+					std::cout << "There isn't higher rank.\n";
+				}
+			}
+		}
+	}
+}
 
+void Galaxy::demote_jedi(String& jedi_name, double multiplier)
+{
+	for (int i = 0; i < size; i++)
+	{
+		for (int j = 0; j < planets[i].getAmountOfJedi(); j++)
+		{
+			if (strcmp(planets[i].getJediOnPlanet()[j].getName().str(), jedi_name.str()) == 0)
+			{
+				planets[i].getJediOnPlanet()[j].setPower((1 - multiplier) * (planets[i].getJediOnPlanet()[j].getPower()));
+				if (planets[i].getJediOnPlanet()[j].getRank() != YOUNGLING)
+				{
+					planets[i].getJediOnPlanet()[j].setRank((JediRank)((int)planets[i].getJediOnPlanet()[j].getRank() - 1));
+				}
+				else
+				{
+					std::cout << "There isn't lower rank.\n";
+				}
+			}
+		}
+	}
+}
+
+void Galaxy::get_strongest_jedi(String& planet_name)
+{
+}
+
+void Galaxy::get_most_used_saber_colour(String& planet_name)
+{
+}
+
+void Galaxy::printJedi(String& jedi_name)
+{
+	for (int i = 0; i < size; i++)
+	{
+		for (int j = 0; j < planets[i].getAmountOfJedi(); j++)
+		{
+			if (strcmp(planets[i].getJediOnPlanet()[j].getName().str(), jedi_name.str()) == 0)
+			{
+				std::cout << planets[i].getJediOnPlanet()[j] << "Planet:" << planets[i].getName();
+			}
+		}
+	}
 }
 
 ///gets the index of the planet that is entered as a parameter and returns it as integer
@@ -108,7 +169,3 @@ int Galaxy::get_index(String& planet_name)
 	return planet_index;
 }
 
-void Galaxy::looking_for_jedi(String& jedi_name)
-{
-	
-}

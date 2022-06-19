@@ -14,7 +14,7 @@ public:
 	~Planet();
 	String getName() const;
 	Jedi* getJediOnPlanet() const;
-	void setJediOnPlanet(Jedi* array);
+	void setJediOnPlanet(Jedi* _array);
 	int getAmountOfJedi() const;
 private:
 	void copy(const Planet& other);

@@ -1,15 +1,17 @@
 #include "jedi.h"
 
+const char* Jedi::JEDI_RANKS[] = {"YOUNGLING", "INITIATE" ,"PADAWAN", "KNIGHT_ASPIRANT", "KNIGHT", "MASTER", "BATTLE_MASTER", "GRAND_MASTER"};
+
 Jedi::Jedi()
 {
 	name = nullptr;
-	rank = nullptr;
+	rank = JediRank::YOUNGLING;
 	age = 0;
 	lightsaber_colour = nullptr;
 	power = 0;
 }
 
-Jedi::Jedi(String _name, String _rank, int _age, String _lightsaber_colour, double _power)
+Jedi::Jedi(String _name, JediRank _rank, int _age, String _lightsaber_colour, double _power)
 {
 	name = _name;
 	rank = _rank;
@@ -23,9 +25,14 @@ String Jedi::getName() const
 	return name;
 }
 
-String Jedi::getRank() const
+JediRank Jedi::getRank() const
 {
 	return rank;
+}
+
+void Jedi::setRank(JediRank _rank)
+{
+	rank = _rank;
 }
 
 int Jedi::getAge() const
@@ -43,10 +50,23 @@ double Jedi::getPower() const
 	return power;
 }
 
+void Jedi::setPower(double _power)
+{
+	power = _power;
+}
+
 std::istream& operator>>(std::istream& in, Jedi& jedi)
 {
 	in >> jedi.name;
-	in >> jedi.rank;
+	String inputRank;
+	in >> inputRank;
+	for (int i = 0; i <= GRAND_MASTER; i++)
+	{
+		if (strcmp(Jedi::JEDI_RANKS[i], inputRank.str()) == 0)
+		{
+			jedi.rank = (JediRank) i;
+		}
+	}
 	in >> jedi.age;
 	in >> jedi.lightsaber_colour;
 	in >> jedi.power;
@@ -61,7 +81,7 @@ std::ostream& operator<<(std::ostream& out, const Jedi& jedi)
 	out << " ";
 	
 	out << "Rang: ";
-	out << jedi.rank;
+	out << Jedi::JEDI_RANKS[jedi.rank];
 	out << " ";
 
 	out << "Age: ";
