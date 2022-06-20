@@ -207,6 +207,8 @@ void Galaxy::get_most_used_saber_colour(String& planet_name, JediRank& jedi_rank
 	int planet_index = get_index(planet_name);
 	int temp_size = 0;
 
+	//gets amount of jedi with chosen rank -> can be done as separate method or function
+
 	for (int i = 0; i < planets[planet_index].getAmountOfJedi(); i++)
 	{
 		if (planets[planet_index].getJediOnPlanet()[i].getRank() == jedi_rank)
@@ -214,6 +216,8 @@ void Galaxy::get_most_used_saber_colour(String& planet_name, JediRank& jedi_rank
 			temp_size++;
 		}
 	}
+
+	//creates new array and fills it with the jedi with chosen rank -> can be done as separate method or function
 
 	Jedi* temp = new Jedi[temp_size];
 	for (int i = 0, j = 0; j < temp_size; i++, j++)
@@ -223,6 +227,8 @@ void Galaxy::get_most_used_saber_colour(String& planet_name, JediRank& jedi_rank
 			temp[j] = planets[planet_index].getJediOnPlanet()[i];
 		}
 	}
+
+	//gets the index of the most used colour -> can be done as separate method or function
 
 	int maxcount = 0;
 	int most_used_clr_index = 0;
@@ -250,6 +256,55 @@ void Galaxy::get_most_used_saber_colour(String& planet_name, JediRank& jedi_rank
 void Galaxy::get_most_used_saber_colour(String& planet_name)
 {
 
+}
+
+void Galaxy::printPlanet(String& planet_name)
+{
+	int planet_index = get_index(planet_name);
+	int min_index;
+	
+	//selection sort to sort the jedi A - Z -> can be done as separate method or function
+
+	for (int i = 0; i < planets[planet_index].getAmountOfJedi(); i++)
+	{
+		min_index = i;
+		for (int j = i + 1; j < planets[planet_index].getAmountOfJedi(); j++)
+		{
+			if (strcmp(planets[planet_index].getJediOnPlanet()[j].getName().str(), planets[planet_index].getJediOnPlanet()[min_index].getName().str()) < 0)
+			{
+				min_index = j;
+			}
+		}
+		if (min_index != i)
+		{
+			Jedi temp;
+			temp = planets[planet_index].getJediOnPlanet()[i];
+			planets[planet_index].getJediOnPlanet()[i] = planets[planet_index].getJediOnPlanet()[min_index];
+			planets[planet_index].getJediOnPlanet()[min_index] = temp;
+		}
+	}
+
+	//bubble sort to sort the ranks without messing up the alphabetical order -> can be done as separate method or function
+	
+	for (int i = 0; i < planets[planet_index].getAmountOfJedi() - 1; i++)
+	{
+		for (int j = 0; j < planets[planet_index].getAmountOfJedi() - i - 1; j++)
+		{
+			if (planets[planet_index].getJediOnPlanet()[j].getRank() > planets[planet_index].getJediOnPlanet()[j + 1].getRank())
+			{
+				Jedi temp;
+				temp = planets[planet_index].getJediOnPlanet()[i];
+				planets[planet_index].getJediOnPlanet()[i] = planets[planet_index].getJediOnPlanet()[min_index];
+				planets[planet_index].getJediOnPlanet()[min_index] = temp;
+			}
+		}
+	}
+
+	std::cout <<"The jedi on planet " << planet_name << " are :\n" << std::endl;
+	for (int i = 0; i < planets[planet_index].getAmountOfJedi(); i++)
+	{
+		std::cout << planets[planet_index].getJediOnPlanet()[i] << std::endl;
+	}
 }
 
 void Galaxy::printJedi(String& jedi_name)
