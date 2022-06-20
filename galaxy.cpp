@@ -41,6 +41,11 @@ void Galaxy::clear()
 	delete[] planets;
 }
 
+int Galaxy::getSize() const
+{
+	return size;
+}
+
 ///
 void Galaxy::add_planet(String &planet_name)
 {
@@ -255,10 +260,10 @@ void Galaxy::get_most_used_saber_colour(String& planet_name, JediRank& jedi_rank
 
 void Galaxy::get_most_used_saber_colour(String& planet_name)
 {
-
+	std::cout << "Ain't got time for this function. \n";
 }
 
-void Galaxy::printPlanet(String& planet_name)
+void Galaxy::print_planet(String& planet_name)
 {
 	int planet_index = get_index(planet_name);
 	int min_index;
@@ -307,7 +312,7 @@ void Galaxy::printPlanet(String& planet_name)
 	}
 }
 
-void Galaxy::printJedi(String& jedi_name)
+void Galaxy::print_jedi(String& jedi_name)
 {
 	for (int i = 0; i < size; i++)
 	{
@@ -319,6 +324,50 @@ void Galaxy::printJedi(String& jedi_name)
 			}
 		}
 	}
+}
+
+void Galaxy::plus(String& planet_name1, String& planet_name2)
+{
+	int planet_index1 = get_index(planet_name1);
+	int planet_index2 = get_index(planet_name2);
+	int size = planets[planet_index1].getAmountOfJedi() + planets[planet_index2].getAmountOfJedi();
+
+	Jedi* temp = new Jedi[size];
+	for (int i = 0; i < planets[planet_index1].getAmountOfJedi(); i++)
+	{
+		temp[i] = planets[planet_index1].getJediOnPlanet()[i];
+	}
+	for (int j = planets[planet_index2].getAmountOfJedi(); j < size; j++)
+	{
+		temp[j] = planets[planet_index2].getJediOnPlanet()[j];
+	}
+
+	int min_index;
+	for (int i = 0; i < size; i++)
+	{
+		min_index = i;
+		for (int j = i + 1; j < size; j++)
+		{
+			if (strcmp(temp[j].getName().str(), temp[min_index].getName().str()) < 0)
+			{
+				min_index = j;
+			}
+		}
+		if (min_index != i)
+		{
+			Jedi jedi;
+			jedi = temp[i];
+			temp[i] = temp[min_index];
+			temp[min_index] = jedi;
+		}
+	}
+
+	for (int i = 0; i < size; i++)
+	{
+		std::cout << temp[i] << std::endl;
+	}
+
+	delete[] temp;
 }
 
 ///gets the index of the planet that is entered as a parameter and returns it as integer

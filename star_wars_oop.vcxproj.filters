@@ -44,5 +44,8 @@
     <ClInclude Include="string.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="commandHelper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
