@@ -24,6 +24,31 @@ void help()
 	std::cout << "<+> prints all the jedi in alphabetical order that live on the 2 chosen planets\n";
 }
 
+
+void writeInFile(const Galaxy& galaxy)
+{
+	std::ofstream out;
+
+	out.open("galaxy.bin", std::ios::binary);
+	if (out)
+	{
+		galaxy.serializeGalaxy(out);
+	}
+	out.close();
+}
+
+void readFromFile(Galaxy& galaxy)
+{
+	std::ifstream in;
+
+	in.open("galaxy.bin", std::ios::binary);
+	if (in)
+	{
+		galaxy.deserializeGalaxy(in);
+	}
+	in.close();
+}
+
 void add_planet_(Galaxy& galaxy)
 {
 	String name;
