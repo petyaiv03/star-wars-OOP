@@ -13,6 +13,7 @@ enum class JediRank
 	GRAND_MASTER = 7
 };
 
+///class with members string name, enumtype rank, int age, string color, double power
 class Jedi
 {
 private:

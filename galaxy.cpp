@@ -46,7 +46,7 @@ int Galaxy::getSize() const
 	return size;
 }
 
-///
+
 void Galaxy::add_planet(const String &planet_name)
 {
 	Planet planet;

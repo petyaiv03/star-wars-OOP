@@ -25,7 +25,7 @@ void help()
 }
 
 
-void writeInFile(const Galaxy& galaxy)
+void open(const Galaxy& galaxy)
 {
 	std::ofstream out;
 
@@ -37,7 +37,7 @@ void writeInFile(const Galaxy& galaxy)
 	out.close();
 }
 
-void readFromFile(Galaxy& galaxy)
+void save(Galaxy& galaxy)
 {
 	std::ifstream in;
 
@@ -155,24 +155,18 @@ void create_jedi_(Galaxy& galaxy)
 //
 //}
 
-void open()
-{
 
+
+void close(bool exit)
+{
+	exit = true;
 }
 
-void close()
-{
 
-}
-
-void save()
-{
-
-}
 
 void saveas()
 {
-
+	std::cout << "didn't have time for it sry";
 }
 
 void exit()
