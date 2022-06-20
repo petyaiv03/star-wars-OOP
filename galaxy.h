@@ -16,20 +16,20 @@ private:
 	void clear();
 public:
 	int getSize() const;
-	void add_planet(String &planet_name);
-	void create_jedi(String &planet_name, String &jedi_name, JediRank &jedi_rank, int jedi_age, String &saber_color, double jedi_strength);
-	void remove_jedi(String &jedi_name, String &planet_name);
-	void promote_jedi(String &jedi_name, double multiplier);
-	void demote_jedi(String &jedi_name, double multiplier);
-	void get_strongest_jedi(String &planet_name);
-	void get_youngest_jedi(String &planet_name, JediRank &jedi_rank);
-	void get_most_used_saber_colour(String &planet_name, JediRank &jedi_rank);
-	void get_most_used_saber_colour(String &planet_name);
-	void print_planet(String &planet_name);
-	void print_jedi(String &jedi_name);
+	void add_planet(const const String &planet_name);
+	void create_jedi(const String &planet_name, const String &jedi_name, JediRank &jedi_rank, int jedi_age, const String &saber_color, double jedi_strength);
+	void remove_jedi(const String &jedi_name, const String &planet_name);
+	void promote_jedi(const String &jedi_name, double multiplier);
+	void demote_jedi(const String &jedi_name, double multiplier);
+	void get_strongest_jedi(const String &planet_name);
+	void get_youngest_jedi(const String &planet_name, JediRank &jedi_rank);
+	void get_most_used_saber_colour(const String &planet_name, JediRank &jedi_rank);
+	void get_most_used_saber_colour_(const String &planet_name);
+	void print_planet(const String &planet_name);
+	void print_jedi(const String &jedi_name);
 	
-	void plus (String &planet_name1, String &planet_name2);
+	void plus (const String &planet_name1, const String &planet_name2);
 
-	int get_index(String& planet_name);
+	int get_index(const String& planet_name);
 
 };

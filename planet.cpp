@@ -1,6 +1,13 @@
 #include "planet.h"
 
-Planet::Planet(String planetName) : planetName(planetName), jediOnPlanet(nullptr), amountOfJedi(0) {}
+//Planet::Planet(String planetName) : planetName(planetName), jediOnPlanet(nullptr), amountOfJedi(0) {}
+
+Planet::Planet()
+{
+	planetName = nullptr;
+	jediOnPlanet = nullptr;
+	amountOfJedi = 0;
+}
 
 Planet::Planet(const Planet& other)
 {
@@ -27,6 +34,11 @@ String Planet::getName() const
 	return planetName;
 }
 
+void Planet::setName(const String& _planetName)
+{
+	planetName = _planetName;
+}
+
 Jedi* Planet::getJediOnPlanet() const
 {
 	return jediOnPlanet;
@@ -45,15 +57,18 @@ int Planet::getAmountOfJedi() const
 void Planet::copy(const Planet& other)
 {
 	planetName = other.planetName;
-	jediOnPlanet = new Jedi[other.amountOfJedi];
-	for (int i = 0; i < amountOfJedi; ++i)
+	if (other.amountOfJedi > 0)
 	{
-		jediOnPlanet[i] = other.jediOnPlanet[i];
+		jediOnPlanet = new Jedi[other.amountOfJedi];
+		for (int i = 0; i < other.amountOfJedi; ++i)
+		{
+			jediOnPlanet[i] = other.jediOnPlanet[i];
+		}
 	}
 	amountOfJedi = other.amountOfJedi;
 }
 
 void Planet::clear()
 {
-	delete[] jediOnPlanet;
+	delete []jediOnPlanet;
 }

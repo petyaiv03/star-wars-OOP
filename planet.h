@@ -8,11 +8,13 @@ private:
 	Jedi* jediOnPlanet;
 	int amountOfJedi;
 public:
-	Planet(String planetName = "");
+	//Planet(String planetName = "");
+	Planet();
 	Planet(const Planet& other);
 	Planet& operator=(const Planet& other);
 	~Planet();
 	String getName() const;
+	void setName(const String& _planetName);
 	Jedi* getJediOnPlanet() const;
 	void setJediOnPlanet(Jedi* _array);
 	int getAmountOfJedi() const;

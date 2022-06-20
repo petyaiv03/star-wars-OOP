@@ -15,6 +15,7 @@ public:
 	String(const String& other);
 	String& operator=(const String& other);
 	~String();
+	void setData(char* _data);
 	size_t getSize() const;
 	String operator+(const String& other) const;
 	void add(const String& other);

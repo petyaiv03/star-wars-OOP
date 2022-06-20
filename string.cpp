@@ -42,6 +42,11 @@ String::~String()
 	clear();
 }
 
+void String::setData(char* _data)
+{
+	data = _data;
+}
+
 size_t String::getSize() const
 {
 	return strlen(data);
@@ -84,7 +89,12 @@ void String::deserialize(std::ifstream& in)
 
 void String::readFromConsole()
 {
-	std::cin.getline(data, MAX_STRLEN);
+	char reader[MAX_STRLEN];
+	std::cin.getline(reader, MAX_STRLEN);
+
+	delete data;
+	data = new char[std::strlen(reader) + 1];
+	std::strncpy(data, reader, std::strlen(reader) + 1);
 }
 
 void String::copy(const String& other)

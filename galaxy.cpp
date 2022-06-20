@@ -47,21 +47,22 @@ int Galaxy::getSize() const
 }
 
 ///
-void Galaxy::add_planet(String &planet_name)
+void Galaxy::add_planet(const String &planet_name)
 {
-	Planet planet(planet_name);
+	Planet planet;
+	planet.setName(planet_name);
 	Planet* array_ = new Planet[size + 1];
-	for (int i = 0; i < size - 1; i++)
+	for (int i = 0; i < size; i++)
 	{
 		array_[i] = planets[i];//ot visual studio e :D
 	}
-	array_[size - 1] = planet;
+	array_[size] = planet;
 	size++;
 	delete [] planets;
 	planets = array_;
 }
 
-void Galaxy::create_jedi(String &planet_name, String &jedi_name, JediRank &jedi_rank, int jedi_age, String &saber_color, double jedi_strength)
+void Galaxy::create_jedi(const String &planet_name, const String &jedi_name, JediRank &jedi_rank, int jedi_age, const String &saber_color, double jedi_strength)
 {
 	Jedi jedi(jedi_name, jedi_rank, jedi_age, saber_color, jedi_strength);
 
@@ -82,7 +83,7 @@ void Galaxy::create_jedi(String &planet_name, String &jedi_name, JediRank &jedi_
 	planets[planet_index].setJediOnPlanet(array_);
 }
 
-void Galaxy::remove_jedi(String& jedi_name, String& planet_name)
+void Galaxy::remove_jedi(const String & jedi_name, const String & planet_name)
 {
 	int planet_index = get_index(planet_name);
 	int sizeOfCurrentArray = planets[planet_index].getAmountOfJedi();
@@ -94,7 +95,7 @@ void Galaxy::remove_jedi(String& jedi_name, String& planet_name)
 	}
 }
 
-void Galaxy::promote_jedi(String& jedi_name, double multiplier)
+void Galaxy::promote_jedi(const String & jedi_name, double multiplier)
 {
 	for (int i = 0; i < size; i++)
 	{
@@ -116,7 +117,7 @@ void Galaxy::promote_jedi(String& jedi_name, double multiplier)
 	}
 }
 
-void Galaxy::demote_jedi(String& jedi_name, double multiplier)
+void Galaxy::demote_jedi(const String & jedi_name, double multiplier)
 {
 	for (int i = 0; i < size; i++)
 	{
@@ -138,7 +139,7 @@ void Galaxy::demote_jedi(String& jedi_name, double multiplier)
 	}
 }
 
-void Galaxy::get_strongest_jedi(String& planet_name)
+void Galaxy::get_strongest_jedi(const String & planet_name)
 {
 	int planet_index = get_index(planet_name);
 	double max_power = -1;
@@ -154,7 +155,7 @@ void Galaxy::get_strongest_jedi(String& planet_name)
 	std::cout << planets[planet_index].getJediOnPlanet()[max_power_index];
 }
 
-void Galaxy::get_youngest_jedi(String& planet_name, JediRank& jedi_rank)
+void Galaxy::get_youngest_jedi(const String & planet_name, JediRank& jedi_rank)
 {
 	int planet_index = get_index(planet_name);
 	int temp_size = 0;
@@ -207,7 +208,7 @@ void Galaxy::get_youngest_jedi(String& planet_name, JediRank& jedi_rank)
 	delete[] temp;
 }
 
-void Galaxy::get_most_used_saber_colour(String& planet_name, JediRank& jedi_rank)
+void Galaxy::get_most_used_saber_colour(const String & planet_name, JediRank& jedi_rank)
 {
 	int planet_index = get_index(planet_name);
 	int temp_size = 0;
@@ -258,12 +259,12 @@ void Galaxy::get_most_used_saber_colour(String& planet_name, JediRank& jedi_rank
 	delete[] temp;
 }
 
-void Galaxy::get_most_used_saber_colour(String& planet_name)
+void Galaxy::get_most_used_saber_colour_(const String & planet_name)
 {
-	std::cout << "Ain't got time for this function. \n";
+	std::cout << "Ain't got time for this method. \n";
 }
 
-void Galaxy::print_planet(String& planet_name)
+void Galaxy::print_planet(const String & planet_name)
 {
 	int planet_index = get_index(planet_name);
 	int min_index;
@@ -312,7 +313,7 @@ void Galaxy::print_planet(String& planet_name)
 	}
 }
 
-void Galaxy::print_jedi(String& jedi_name)
+void Galaxy::print_jedi(const String & jedi_name)
 {
 	for (int i = 0; i < size; i++)
 	{
@@ -326,7 +327,7 @@ void Galaxy::print_jedi(String& jedi_name)
 	}
 }
 
-void Galaxy::plus(String& planet_name1, String& planet_name2)
+void Galaxy::plus(const String & planet_name1, const String & planet_name2)
 {
 	int planet_index1 = get_index(planet_name1);
 	int planet_index2 = get_index(planet_name2);
@@ -371,7 +372,7 @@ void Galaxy::plus(String& planet_name1, String& planet_name2)
 }
 
 ///gets the index of the planet that is entered as a parameter and returns it as integer
-int Galaxy::get_index(String& planet_name)
+int Galaxy::get_index(const String & planet_name)
 {
 	int planet_index = -1;
 	for (int i = 0; i < size; i++)

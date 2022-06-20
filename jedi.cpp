@@ -11,7 +11,7 @@ Jedi::Jedi()
 	power = 0;
 }
 
-Jedi::Jedi(String _name, JediRank _rank, int _age, String _lightsaber_colour, double _power)
+Jedi::Jedi(const String& _name,JediRank _rank, int _age,const String& _lightsaber_colour, double _power)
 {
 	name = _name;
 	rank = _rank;

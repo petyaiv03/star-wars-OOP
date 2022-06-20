@@ -1,6 +1,7 @@
 #include <iostream>
 #include "galaxy.h"
 #include "string.h"
+#include "jedi.h"
 #pragma once
 
 void help()
@@ -23,76 +24,82 @@ void help()
 	std::cout << "<+> prints all the jedi in alphabetical order that live on the 2 chosen planets\n";
 }
 
-void add_planet_()
+void add_planet_(Galaxy& galaxy)
 {
 	String name;
-	Galaxy galaxy;
-	std::cout << "Enter planet name:	";
+	std::cout << "Enter planet name:";
 	name.readFromConsole();
 	std::cout << name<<std::endl;
+	galaxy.add_planet(name);
 	int size = galaxy.getSize();
-	std::cout << size;
-	//galaxy.add_planet(name);
-	/*if (galaxy.getSize() > size)
+	std::cout << std::endl << size;
+}
+
+JediRank getRank_(const String& rank)
+{
+	for (int i = 0; i <= (int) JediRank::GRAND_MASTER; i++)
 	{
-	std::cout << "\nPlanet has been added successfully.\n";
-	}*/
+		if (strcmp(rank.str(), Jedi::JEDI_RANKS[i]) == 0)
+		{
+			return (JediRank) i;
+		}
+	}
+	return JediRank::YOUNGLING;
 }
-
-void create_jedi()
-{
-
-}
-
-void remove_jedi()
-{
-
-}
-
-void promote_jedi()
-{
-
-}
-
-void demote_jedi()
-{
-
-}
-
-void get_strongest_jedi()
-{
-
-}
-
-void get_youngest_jedi()
-{
-
-}
-
-void get_most_used_saber_colour()
-{
-
-}
-
-void get_most_used_saber_colour_p()
-{
-
-}
-
-void print_planet()
-{
-
-}
-
-void print_jedi()
-{
-
-}
-
-void plus()
-{
-
-}
+//void create_jedi()
+//{
+//
+//}
+//
+//void remove_jedi()
+//{
+//
+//}
+//
+//void promote_jedi()
+//{
+//
+//}
+//
+//void demote_jedi()
+//{
+//
+//}
+//
+//void get_strongest_jedi()
+//{
+//
+//}
+//
+//void get_youngest_jedi()
+//{
+//
+//}
+//
+//void get_most_used_saber_colour()
+//{
+//
+//}
+//
+//void get_most_used_saber_colour_p()
+//{
+//
+//}
+//
+//void print_planet()
+//{
+//
+//}
+//
+//void print_jedi()
+//{
+//
+//}
+//
+//void plus()
+//{
+//
+//}
 
 void open()
 {
