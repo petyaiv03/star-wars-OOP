@@ -20,6 +20,32 @@ Jedi::Jedi(const String& _name,JediRank _rank, int _age,const String& _lightsabe
 	power = _power;
 }
 
+Jedi::Jedi(std::ifstream& in)
+{
+	name.deserialize(in);
+	in.read((char*)&rank, sizeof(rank));
+	in.read((char*)&age, sizeof(age));
+	lightsaber_colour.deserialize(in);
+	in.read((char*)&power, sizeof(power));
+}
+
+void Jedi::jediSerialize(std::ofstream& out) const
+{
+	int length_name = name.getSize() + 1;
+	out.write((const char*)&length_name, sizeof(length_name));
+	out.write(name.str(), length_name);
+
+	out.write((const char*)&rank, sizeof(rank));
+
+	out.write((const char*)&age, sizeof(age));
+
+	int length_color = name.getSize() + 1;
+	out.write((const char*)&length_color, sizeof(length_color));
+	out.write(name.str(), length_color);
+
+	out.write((const char*)&power, sizeof(power));
+}
+
 String Jedi::getName() const
 {
 	return name;

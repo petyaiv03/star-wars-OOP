@@ -25,6 +25,8 @@ public:
 	static const char* JEDI_RANKS[]; 
 	Jedi();
 	Jedi(const String& _name, JediRank _rank, int _age,const String& _lightsaber_colour, double _power);
+	Jedi(std::ifstream& in);
+	void jediSerialize(std::ofstream& out) const;
 	String getName() const;
 	JediRank getRank() const;
 	void setRank(JediRank _rank);

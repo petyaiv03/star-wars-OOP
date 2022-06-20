@@ -327,6 +327,29 @@ void Galaxy::print_jedi(const String & jedi_name)
 	}
 }
 
+void Galaxy::serializeGalaxy(std::ofstream& out) const
+{
+	out.write((const char*)&size, sizeof(size));
+	for (int i = 0; i < size; i++)
+	{
+		planets[i].serializePlanet(out);
+	}
+}
+
+void Galaxy::deserializeGalaxy(std::ifstream& in)
+{
+	clear();
+	in.read((char*)&size, sizeof(size));
+	if (size > 0)
+	{
+		planets = new Planet[size];
+	}
+	for (int i = 0; i < size; i++)
+	{
+		planets[i].deserializePlanet(in);
+	}
+}
+
 void Galaxy::plus(const String & planet_name1, const String & planet_name2)
 {
 	int planet_index1 = get_index(planet_name1);

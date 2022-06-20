@@ -46,10 +46,39 @@ JediRank getRank_(const String& rank)
 	}
 	return JediRank::YOUNGLING;
 }
-//void create_jedi()
-//{
-//
-//}
+void create_jedi_(Galaxy& galaxy)
+{
+	String planet_name;
+	std::cout << "Enter the name of the planet:\n";
+	planet_name.readFromConsole();
+
+	String jedi_name;
+	std::cout << "Enter the name of the Jedi:\n";
+	jedi_name.readFromConsole();
+
+	String rank;
+	std::cout << "Enter the rank of the jedi:\n";
+	rank.readFromConsole();
+	JediRank rank_ = getRank_(rank);
+
+	int age;
+	do {
+		std::cout << "Enter jedi age:\n";
+		std::cin >> age;
+	} while (age <= 0);
+
+	String saber_color;
+	std::cout << "Enter ligthsaber colour:\n";
+	saber_color.readFromConsole();
+
+	double strength;
+	do {
+		std::cout << "Enter jedi strength:\n";
+		std::cin >> strength;
+	} while (strength <= 0);
+
+	galaxy.create_jedi(planet_name, jedi_name, rank_, age, saber_color, strength);
+}
 //
 //void remove_jedi()
 //{

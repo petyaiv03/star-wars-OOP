@@ -18,6 +18,9 @@ public:
 	Jedi* getJediOnPlanet() const;
 	void setJediOnPlanet(Jedi* _array);
 	int getAmountOfJedi() const;
+
+	void serializePlanet(std::ofstream& out) const;
+	void deserializePlanet(std::ifstream& in);
 private:
 	void copy(const Planet& other);
 	void clear();

@@ -54,6 +54,34 @@ int Planet::getAmountOfJedi() const
 	return amountOfJedi;
 }
 
+void Planet::serializePlanet(std::ofstream& out) const
+{
+	int length_name = planetName.getSize() + 1;
+	out.write((const char*)&length_name, sizeof(length_name));
+	out.write(planetName.str(), length_name);
+
+	out.write((const char*)&amountOfJedi, sizeof(amountOfJedi));
+	for (int i = 0; i < amountOfJedi; i++)
+	{
+		jediOnPlanet[i].jediSerialize(out);
+	}
+}
+
+void Planet::deserializePlanet(std::ifstream& in)
+{
+	clear();
+	planetName.deserialize(in);
+	in.read((char*)&amountOfJedi, sizeof(amountOfJedi));
+	if (amountOfJedi > 0)
+	{
+		jediOnPlanet = new Jedi[amountOfJedi];
+	}
+	for (int i = 0; i < amountOfJedi; i++)
+	{
+		jediOnPlanet[i] = Jedi(in);
+	}
+}
+
 void Planet::copy(const Planet& other)
 {
 	planetName = other.planetName;

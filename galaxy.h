@@ -2,6 +2,7 @@
 #include "planet.h"
 #include "string.h"
 
+
 class Galaxy {
 private:
 	Planet* planets;
@@ -27,6 +28,9 @@ public:
 	void get_most_used_saber_colour_(const String &planet_name);
 	void print_planet(const String &planet_name);
 	void print_jedi(const String &jedi_name);
+
+	void serializeGalaxy(std::ofstream& out) const;
+	void deserializeGalaxy(std::ifstream& in);
 	
 	void plus (const String &planet_name1, const String &planet_name2);
 
