@@ -104,7 +104,7 @@ void Galaxy::promote_jedi(String& jedi_name, double multiplier)
 				}
 				else
 				{
-					std::cout << "There isn't higher rank.\n";
+					std::cout << "There isn't higher rank. Jedi remains the same rank. \n";
 				}
 			}
 		}
@@ -126,7 +126,7 @@ void Galaxy::demote_jedi(String& jedi_name, double multiplier)
 				}
 				else
 				{
-					std::cout << "There isn't lower rank.\n";
+					std::cout << "There isn't lower rank. Jedi remains the same rank. \n";
 				}
 			}
 		}
@@ -147,6 +147,59 @@ void Galaxy::get_strongest_jedi(String& planet_name)
 		}
 	}
 	std::cout << planets[planet_index].getJediOnPlanet()[max_power_index];
+}
+
+void Galaxy::get_youngest_jedi(String& planet_name, JediRank& jedi_rank)
+{
+	int planet_index = get_index(planet_name);
+	int temp_size = 0;
+
+	for (int i = 0; i < planets[planet_index].getAmountOfJedi(); i++)
+	{
+		if (planets[planet_index].getJediOnPlanet()[i].getRank() == jedi_rank)
+		{
+			temp_size++;
+		}
+	}
+
+	Jedi* temp = new Jedi[temp_size];
+	for (int i = 0, j = 0; j < temp_size ; i++, j++)
+	{ 
+		if (planets[planet_index].getJediOnPlanet()[i].getRank() == jedi_rank)
+		{
+			temp[j] = planets[planet_index].getJediOnPlanet()[i];
+		}
+	}
+
+	if (temp_size > 0)
+	{
+		int min_index = 0;
+		for (int i = 0; i < temp_size; i++)
+		{
+			min_index = i;
+			for (int j = i + 1; j < temp_size; j++)
+			{
+				if (planets[planet_index].getJediOnPlanet()[j].getAge() < planets[planet_index].getJediOnPlanet()[i].getAge())
+				{
+					min_index = j;
+				}
+				if (min_index != i)
+				{
+					Jedi jedi_t;
+					jedi_t = temp[i];
+					temp[i] = temp[min_index];
+					temp[min_index] = jedi_t;
+				}
+			}
+		}
+		std::cout << "This is the youngest Jedi of this rank: \n" << temp[0] << std::endl;
+	}
+	else
+	{
+		std::cout << "A Jedi with this rank doesn't exist. \n";
+	}
+
+	delete[] temp;
 }
 
 void Galaxy::get_most_used_saber_colour(String& planet_name)
