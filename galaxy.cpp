@@ -202,6 +202,51 @@ void Galaxy::get_youngest_jedi(String& planet_name, JediRank& jedi_rank)
 	delete[] temp;
 }
 
+void Galaxy::get_most_used_saber_colour(String& planet_name, JediRank& jedi_rank)
+{
+	int planet_index = get_index(planet_name);
+	int temp_size = 0;
+
+	for (int i = 0; i < planets[planet_index].getAmountOfJedi(); i++)
+	{
+		if (planets[planet_index].getJediOnPlanet()[i].getRank() == jedi_rank)
+		{
+			temp_size++;
+		}
+	}
+
+	Jedi* temp = new Jedi[temp_size];
+	for (int i = 0, j = 0; j < temp_size; i++, j++)
+	{
+		if (planets[planet_index].getJediOnPlanet()[i].getRank() == jedi_rank)
+		{
+			temp[j] = planets[planet_index].getJediOnPlanet()[i];
+		}
+	}
+
+	int maxcount = 0;
+	int most_used_clr_index = 0;
+	for (int i = 0; i < temp_size; i++)
+	{
+		int count = 0;
+		for (int j = 0; j < temp_size; j++)
+		{
+			if (strcmp(temp[i].getColour().str(),temp[j].getColour().str()) == 0)
+				count++;
+		}
+
+		if (count > maxcount)
+		{
+			maxcount = count;
+			temp[most_used_clr_index] = temp[i];
+		}
+	}
+
+	std::cout << "Most used by chosen rank saber colour on the planet is " << temp[most_used_clr_index].getColour() << ".\n";
+
+	delete[] temp;
+}
+
 void Galaxy::get_most_used_saber_colour(String& planet_name)
 {
 
