@@ -92,6 +92,7 @@ void create_jedi_(Galaxy& galaxy)
 		std::cin >> age;
 	} while (age <= 0);
 
+	std::cin.ignore();//added after deadline
 	String saber_color;
 	std::cout << "Enter ligthsaber colour:\n";
 	saber_color.readFromConsole();
